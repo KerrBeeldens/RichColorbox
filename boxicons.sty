@@ -1,0 +1,27 @@
+% Some custom icons using tikz to use in the box labels
+
+\newcommand{\exerciseicon}{
+\begin{tikzpicture}[rotate=45, transform shape]
+ \draw[line width = 2pt, draw=white] (0,0) [rounded corners=1pt] -- (0,0.75cm) [rounded corners=1pt] -- (0.2cm, 0.75cm)  [sharp corners] -- (0.2cm, 0) [sharp corners] -- (0.1cm, -0.15cm)  [sharp corners] -- cycle;
+
+  \filldraw[line width = 2pt, draw = white, fill=white] (0,0.65cm) [rounded corners=1pt] -- (0,0.75cm) [rounded corners=1pt] -- (0.2cm, 0.75cm)  [sharp corners] -- (0.2cm, 0.65cm) [sharp corners] -- cycle;
+\end{tikzpicture}
+}
+
+\newcommand{\linkicon}{
+\begin{tikzpicture}[rotate=45,transform shape]
+ \draw[line width = 2pt, draw=white] (0,0.3cm) [rounded corners=0.2cm] -- (0,0.7cm) [rounded corners=0.2cm] -- (0.4cm, 0.7cm)  [sharp corners] -- (0.4cm, 0.3cm);
+
+   \draw[line width = 2pt, draw=white] (0.2cm, 0.5cm) -- (0.2cm, 0cm);
+
+  \draw[line width = 2pt, draw=white] (0,0.2cm) [rounded corners=0.2cm] -- (0, -0.2cm) [rounded corners=0.2cm] -- (0.4cm, -0.2cm)  [sharp corners] -- (0.4cm, 0.2cm);
+  
+\end{tikzpicture}
+}
+
+\newcommand{\codeicon}{
+\begin{tikzpicture}
+ \draw[line width = 2pt, draw=white] (0,0) [rounded corners=1pt] -- (0,0.5cm) [rounded corners=1pt] -- (0.75cm, 0.5cm)  [rounded corners=1pt] -- (0.75cm, 0cm)  [rounded corners=1pt] -- cycle;
+ \draw[line width = 2pt, draw=white] (-0.1cm,-0.15cm) -- (0.85cm,-0.15cm);
+\end{tikzpicture}
+}

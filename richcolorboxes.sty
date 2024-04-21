@@ -1,0 +1,91 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Package Information      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Package providing custom textboxes using tcolorbox. intended to be used along the 'rich' document classes.
+% This package is created by Kerr Beeldens
+
+% This class is dependent on the following packages:
+% - tcolorbox
+% - listings
+% - tikz
+% - xcolor
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{richcolorboxes}[2024/04/17 Package providing custom textboxes using tcolorbox. intended to be used along the 'rich' document classes.]
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{listings}  
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+\RequirePackage{xcolor}
+
+% Load in some icons
+\input{boxicons.sty}
+
+\newtcolorbox{iconbox}[2]{%
+enhanced,
+enlarge top by = 20pt,
+toprule=0pt, rightrule=0pt, leftrule=2pt, bottomrule=0pt, 
+sharp corners, 
+colback=Avans-red!10, colframe = Avans-red,
+breakable, 
+overlay={
+    \node[fill=Avans-red, anchor=south west, xshift=-0.175pt, yshift=-0.18pt, minimum height=20pt, inner sep=5pt] (title) at (frame.north west) {\bf\sffamily\textcolor{white}{#1}};
+    \path let \p1 = ($(title.north west)-(title.south west)$), \n1 = {veclen(\x1,\y1)} in \pgfextra{\xdef\y{\y1}};
+    \fill[fill=Avans-red]($(title.north west) - (15pt, 0)$) --++ (0, -\y - 3pt) --++ (-4pt, 3pt) -- ++(-\y +4pt,0) -- ++(0, \y) -- cycle;
+    \node[scale = 0.5] at ($(title.north west)!0.5!(title.south west)- (15pt, 0) - (\y/2, 0)$) {#2};
+    },
+extras middle and last={overlay={
+    \node[fill=Avans-red, anchor=south west, xshift=-0.175pt, yshift=-0.18pt, minimum height=20pt, inner sep=5pt] (title) at (frame.north west) {\bf\sffamily\textcolor{white}{#1 (vervolg)}};
+    \path let \p1 = ($(title.north west)-(title.south west)$), \n1 = {veclen(\x1,\y1)} in \pgfextra{\xdef\y{\y1}};
+    \fill[fill=Avans-red]($(title.north west) - (15pt, 0)$) --++ (0, -\y - 3pt) --++ (-4pt, 3pt) -- ++(-\y +4pt,0) -- ++(0, \y) -- cycle;
+    \node[scale = 0.5] at ($(title.north west)!0.5!(title.south west)- (15pt, 0) - (\y/2, 0)$) {#2};
+}}
+}
+
+\newenvironment{questionbox}[1]
+{\begin{iconbox}{#1}{\sffamily\Huge\textcolor{white}{?}}}
+{\end{iconbox}}
+
+\newenvironment{cautionbox}[1]
+{\begin{iconbox}{#1}{\sffamily\Huge\textcolor{white}{!}}}
+{\end{iconbox}}
+
+\newenvironment{hyperlinkbox}[1]
+{\begin{iconbox}{#1}{\linkicon}}
+{\end{iconbox}}
+
+\newenvironment{codebox}[1]
+{\begin{iconbox}{#1}{\codeicon}}
+{\end{iconbox}}
+
+\newenvironment{exercisebox}[1]
+{\begin{iconbox}{#1}{\exerciseicon}}
+{\end{iconbox}}
+
+% Defines some settings for the listings package, which allows to format Java code nicely 
+
+\definecolor{dkgreen}{RGB}{38, 127, 0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\definecolor{Avans-red}{rgb}{0.58,0,0.82}
+
+\lstset{
+  language=Java,
+  aboveskip=-2mm,
+  belowskip=-2mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=left,
+  numberstyle=\footnotesize\color{gray!75},
+  keywordstyle=\color{Avans-red},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  numbersep=31pt
+}
