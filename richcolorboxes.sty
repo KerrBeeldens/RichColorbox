@@ -28,7 +28,7 @@ enhanced,
 enlarge top by = 20pt,
 toprule=0pt, rightrule=0pt, leftrule=2pt, bottomrule=0pt, 
 sharp corners, 
-colback=Avans-red!10, colframe = Avans-red,
+colback=Avans-red!4, colframe = Avans-red,
 breakable, 
 overlay={
     \node[fill=Avans-red, anchor=south west, xshift=-0.175pt, yshift=-0.18pt, minimum height=20pt, inner sep=5pt] (title) at (frame.north west) {\bf\sffamily\textcolor{white}{#1}};
@@ -74,18 +74,19 @@ extras middle and last={overlay={
 
 \lstset{
   language=Java,
-  aboveskip=-2mm,
-  belowskip=-2mm,
+  aboveskip= 0pt,
+  belowskip= 0pt,
   showstringspaces=false,
   columns=flexible,
   basicstyle={\ttfamily},
   numbers=left,
-  numberstyle=\footnotesize\color{gray!75},
+  numberstyle=\footnotesize\color{black!75},
   keywordstyle=\color{Avans-red},
   commentstyle=\color{dkgreen},
   stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=true,
   tabsize=3,
-  numbersep=31pt
+  numbersep= 15pt,
+  xleftmargin=15pt
 }
